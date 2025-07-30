@@ -67,6 +67,7 @@ void setup() {
   Serial.println(delay_arg);
   
   // Create mutex before starting tasks
+  // Must use xSemaphoreCreateBinary() because xSemaphoreCreateMutex()requires ownership by the task that takes it
   done_signal = xSemaphoreCreateBinary();
 
   // Start task 1
